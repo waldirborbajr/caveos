@@ -92,18 +92,14 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.borba.shell = pkgs.zsh;
+  # users.users.borba.shell = pkgs.zsh;
+  users.defaultUserShell=pkgs.zsh;
   users.users.borba = {
     isNormalUser = true;
     description = "Borba";
     extraGroups = [ "networkmanager" "wheel" "sudo" ];
     packages = with pkgs; [
       # thunderbird
-      neovim
-      wezterm
-      git
-      lazygit
-      gh
     ];
   };
 
@@ -118,6 +114,11 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+      neovim
+      wezterm
+      git
+      lazygit
+      gh
   ];
 
   environment.variables.EDITOR = "vim";
@@ -184,6 +185,12 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Enable automatic upgrades
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
+
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
