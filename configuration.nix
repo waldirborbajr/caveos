@@ -11,11 +11,10 @@
     ];
 
   # Enable flakes and nifx-command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   nix = {
     settings = {
       auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
     };
     gc = {
       automatic = true;
@@ -96,7 +95,7 @@
   users.users.borba = {
     isNormalUser = true;
     description = "Borba";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "sudo" ];
     packages = with pkgs; [
       # thunderbird
       neovim
