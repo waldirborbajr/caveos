@@ -102,7 +102,7 @@
       neovim
       wezterm
       git
-      lazydit
+      lazygit
       gh
     ];
   };
