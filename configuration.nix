@@ -170,6 +170,9 @@
     histSize = 10000;
   };
 
+  # Enable direnv
+  programs.direnv.enable = true;
+
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -189,8 +192,6 @@
   # Enable automatic upgrades
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
-
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
