@@ -18,6 +18,7 @@
     };
     gc = {
       automatic = true;
+      dates = "daily";
       options = "--delete-older-than 2d";
     };
   };
@@ -101,13 +102,13 @@
       neovim
       wezterm
       git
+      lazydit
       gh
     ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -118,6 +119,36 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
+
+  environment.variables.EDITOR = "vim";
+
+  fonts = {
+    packages = with pkgs; [
+      nerdfonts
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      source-code-pro
+      source-han-mono
+      source-han-sans
+      source-han-serif
+      wqy_zenhei
+    ];
+
+    fontDir.enable = true;
+
+    fontconfig = {
+      enable = true;
+
+      # Fixes pixelation
+      antialias = true;
+
+      # Fixes antialiasing blur
+      hinting = {
+        enable = true;
+      };
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
