@@ -126,14 +126,14 @@
   fonts = {
     packages = with pkgs; [
       nerdfonts
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      source-code-pro
-      source-han-mono
-      source-han-sans
-      source-han-serif
-      wqy_zenhei
+      # noto-fonts
+      # noto-fonts-cjk-sans
+      # noto-fonts-emoji
+      # source-code-pro
+      # source-han-mono
+      # source-han-sans
+      # source-han-serif
+      # wqy_zenhei
     ];
 
     fontDir.enable = true;
@@ -164,7 +164,7 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -la";
-      update = "sudo nixos-rebuild switch";
+      update = "sudo nix-collect-garbage -d && sudo nixos-rebuild switch";
       save = "sudo cp /etc/nixos/*.nix .";
     };
     histSize = 10000;
