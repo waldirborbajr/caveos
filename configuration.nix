@@ -23,6 +23,17 @@
     };
   };
 
+  # The user we're deploying with must be able to run sudo without password.
+  security.sudo.extraRules = [
+    { users = [ borba ];
+      commands = [
+        { command = "ALL";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
