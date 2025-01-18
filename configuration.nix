@@ -4,6 +4,10 @@
 
 { config, pkgs, ... }:
 
+let
+  targetUser = "borba";
+  targetPort = 2222;
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -25,13 +29,19 @@
 
   # The user we're deploying with must be able to run sudo without password.
   security.sudo.extraRules = [
-    { users = [ "borba" ];
+    { users = [ targetUser ];
+
       commands = [
         { command = "ALL";
           options = [ "NOPASSWD" ];
         }
       ];
     }
+  ];
+
+  # Needed to allow the user we're deploying with to write to the nix store.
+  nix.settings.trusted-users = [
+    targetUser
   ];
 
   # Bootloader.
@@ -101,6 +111,16 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  # We need to enable the ssh daemon to be able to deploy.
+  services.openssh = {
+    enable = true;
+    ports = [ targetPort ];
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.borba.shell = pkgs.zsh;
