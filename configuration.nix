@@ -30,6 +30,7 @@ let
   # The user we're deploying with must be able to run sudo without password.
   security.sudo.extraRules = [
     { users = [ targetUser ];
+
       commands = [
         { command = "ALL";
           options = [ "NOPASSWD" ];
