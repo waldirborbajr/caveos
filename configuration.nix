@@ -7,7 +7,7 @@
 let
   targetUser = "borba";
   targetPort = 2222;
-
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -195,8 +195,8 @@ let
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -la";
+      gg = "lazygit";
       update = "sudo nix-collect-garbage -d && sudo nixos-rebuild switch";
-      save = "sudo cp /etc/nixos/*.nix .";
     };
     histSize = 10000;
   };
