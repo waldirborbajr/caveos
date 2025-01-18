@@ -25,7 +25,7 @@
 
   # The user we're deploying with must be able to run sudo without password.
   security.sudo.extraRules = [
-    { users = [ borba ];
+    { users = [ "borba" ];
       commands = [
         { command = "ALL";
           options = [ "NOPASSWD" ];
