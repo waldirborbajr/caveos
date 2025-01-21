@@ -196,7 +196,9 @@ in
     shellAliases = {
       ll = "ls -la";
       gg = "lazygit";
-      update = "sudo nix-collect-garbage -d && sudo nixos-rebuild switch";
+      switch = "sudo nixos-rebuild switch";
+      garbage = "sudo nix-collect-garbage -d --delete-older-than 1d";
+      upgrade = "sudo nixos-rebuild switch --upgrade";
     };
     histSize = 10000;
   };
