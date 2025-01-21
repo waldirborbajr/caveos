@@ -23,7 +23,7 @@ in
     gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 2d";
+      options = "--delete-older-than 1d";
     };
   };
 
@@ -224,6 +224,7 @@ in
 
   # Enable automatic upgrades
   system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "weekly";
   system.autoUpgrade.allowReboot = true;
 
   # This value determines the NixOS release from which the default
