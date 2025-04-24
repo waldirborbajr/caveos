@@ -149,6 +149,7 @@ in
       git
       lazygit
       neovim
+      tmux
       wezterm
   ];
 
